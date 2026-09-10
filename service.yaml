@@ -1,0 +1,14 @@
+# LoadBalancer: k3s ServiceLB binds port 8888 on the node, and the k3d
+# load balancer maps host:8888 to it (see scripts/setup.sh).
+apiVersion: v1
+kind: Service
+metadata:
+  name: wil-playground
+  namespace: dev
+spec:
+  type: LoadBalancer
+  selector:
+    app: wil-playground
+  ports:
+    - port: 8888
+      targetPort: 8888
